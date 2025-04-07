@@ -10,4 +10,4 @@
 
 ### Additions
 
-- The first commit of the project containing the general framework.
+- The first commit of the project containing the general framework
