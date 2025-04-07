@@ -1,0 +1,11 @@
+# Ignore virtual env
+venv/
+
+# Python bytecode
+*.pyc
+__pychache__/
+helpers/__pychache__/
+
+# IDE files
+.vscode/
+.idea/
