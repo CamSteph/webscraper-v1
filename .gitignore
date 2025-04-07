@@ -3,8 +3,9 @@ venv/
 
 # Python bytecode
 *.pyc
-app/__pychache__/
-app/helpers/__pychache__/
+__pycache__/
+app/__pycache__/
+app/helpers/__pycache__/
 
 # IDE files
 .vscode/
