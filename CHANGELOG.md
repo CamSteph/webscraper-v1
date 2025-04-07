@@ -4,7 +4,7 @@
 
 ### Changes
 
-- Refactor intiating code within main.py
+- Simplify initiating code within main.py
 
 - Improve file reading in cache methods within the 'StoreBatchData' class
 
