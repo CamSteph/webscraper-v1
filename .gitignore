@@ -9,3 +9,10 @@ app/helpers/__pychache__/
 # IDE files
 .vscode/
 .idea/
+
+# Pseudocode
+pseudocode.txt
+
+# Cache files
+app/scan_report_current_cache.log
+app/scan_report_history_cache.log
