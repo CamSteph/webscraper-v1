@@ -1,8 +1,9 @@
 # main.py
 
 from helpers.handle_requests import HandleBatchRequests
-from helpers.handle_request_data import HandleRequestData
 from helpers.store_data import StoreBatchData
+# import json
+# json.dumps(data, indent=4)
 
 # __HIGHLIGHT_COLOR: str = "\033[92m"
     # __ENDC: str = "\033[0m"
@@ -58,19 +59,15 @@ if __name__ == "__main__":
             batch.set_url_endpoint(endpoint)
         else:
             break
-    
-    all_endpoints = batch.get_all_url_endpoints()
 
-    for endpoint in all_endpoints:
+    for endpoint in batch.get_all_url_endpoints():
         batch.make_standard_get_request(endpoint)
 
-    raw_data = batch.get_all_response_data()
+    response_data = batch.get_all_response_data()
     failed_requests = batch.get_all_failed_requests()
-    # all_batch_request_data = HandleRequestData(raw_data)
-    
-    # print(all_batch_request_data.get_data())
-    if raw_data:
-        cached_data = StoreBatchData(raw_data)
+
+    if response_data:
+        cached_data = StoreBatchData(response_data)
         cached_data.write_to_current_cache()
         cached_data.append_to_history_cache()
         cached_data.get_current_cache()
