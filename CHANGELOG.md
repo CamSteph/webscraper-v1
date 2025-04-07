@@ -1,9 +1,13 @@
 # Web Scraper v1 Changelog
 
-## CHG-01
+## CHG-001 (04.07.2025)
 
-## Initial Commit (April 7th, 2025)
+### Changes
+
+- Update date format in changelog
+
+## Initial Commit (04.07.2025)
 
 ### Additions
 
-- The first commit of the project containing the general framework.
+- The first commit of the project containing the general framework
