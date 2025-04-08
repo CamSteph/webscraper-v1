@@ -49,6 +49,7 @@ class HandleBatchRequests(object):
         Args:
             endpoint (str): The endpoint to make the HTTP request to
         """
+        status = None
         try:
             current_time = datetime.datetime.now().strftime("%B %d, %Y - %H:%M:%S")
             response = requests.get(endpoint, verify=True)
@@ -67,16 +68,12 @@ class HandleBatchRequests(object):
                 print("The status code is a '%s'" % status)
             else:
                 response.raise_for_status()
+        except requests.exceptions.Timeout as e:
+            self.add_failed_request(endpoint, status, e)
         except requests.RequestException as e:
-            self.all_failed_requests.append({
-                "endpoint": endpoint,
-                "response_status": status,
-                "error_type": f"{type(e).__name__}",
-                "full_error": f"{e}",
-            })
+            self.add_failed_request(endpoint, status, e)
         except Exception as e:
-            print("Something went wrong:")
-            print(f"Error type: {type(e).__name__} - {e}")
+            self.add_failed_request(endpoint, status, e)
         
     def store_response_data(self, data) -> None:
         self.all_response_data.append(data)
@@ -88,6 +85,14 @@ class HandleBatchRequests(object):
             dict: All request data from previous HTTP requests
         """
         return self.all_response_data
+    
+    def add_failed_request(self, endpoint, status, error) -> None:
+        self.all_failed_requests.append({
+                "endpoint": endpoint,
+                "response_status": status,
+                "error_type": f"{type(error).__name__}",
+                "full_error": f"{error}",
+            })
     
     def get_all_failed_requests(self) -> list[dict]:
         """Return dictionary of all failed requests

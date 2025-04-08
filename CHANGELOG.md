@@ -1,5 +1,17 @@
 # Web Scraper v1 Changelog
 
+## CHG-004 (04.08.2025)
+
+## Changes
+
+- Improve HTTP request error handling for timeouts
+
+## Additions
+
+- Add function for setting error on failed HTTP requests
+
+---
+
 ## CHG-003 (04.08.2025)
 
 ## Changes
