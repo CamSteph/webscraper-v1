@@ -1,5 +1,15 @@
 # Web Scraper v1 Changelog
 
+## CHG-003 (04.08.2025)
+
+## Changes
+
+- Move main.py to scraper.py
+
+- Improve README.md
+
+---
+
 ## CHG-002 (04.07.2025)
 
 ### Changes
@@ -14,11 +24,15 @@
 
 - Remove 'HandleRequestData' class
 
+---
+
 ## CHG-001 (04.07.2025)
 
 ### Changes
 
 - Update date format in changelog
+
+---
 
 ## Initial Commit (04.07.2025)
 
