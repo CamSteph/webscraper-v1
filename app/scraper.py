@@ -73,6 +73,11 @@ if __name__ == "__main__":
         cached_data.get_current_cache()
 
     if failed_requests:
+        print("")
         print("Failed Requests: ")
-        for fail in failed_requests:
+        print("--------------------------")
+        for index, fail in enumerate(failed_requests):
+            if index != 0:
+                print("---")
             print(f"\033[31m{fail['full_error']}\033[0m")
+        print("--------------------------")
