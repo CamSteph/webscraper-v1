@@ -13,7 +13,17 @@ class StoreBatchData(object):
                     cache_log.write(f"Endpoint: {d['endpoint']}\n")
                     cache_log.write(f"Response Status: {d['response_status']}\n")
                     cache_log.write(f"Scan date: {d['scan_date']}\n")
-                    cache_log.write("------------------------\n")
+                    cache_log.write(f"Found script tags:\n")
+                    cache_log.write(f"-------------------------------------------\n")
+                    for script in d['found_script_tags']:  
+                        cache_log.write(f"_SCRIPT_: {script}\n")
+                    cache_log.write(f"-------------------------------------------\n")
+                    cache_log.write(f"Found hyperlinks:\n")
+                    cache_log.write(f"-------------------------------------------\n")
+                    for link in d['found_hyperlinks']:  
+                        cache_log.write(f"_HYPERLINK_: {link}\n")
+                    cache_log.write(f"-------------------------------------------\n")
+                    cache_log.write(f"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
         except Exception as e:
             print(f"Error type: {type(e).__name__} - {e}")
 

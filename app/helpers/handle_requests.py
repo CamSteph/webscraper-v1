@@ -1,5 +1,6 @@
 # handle_requests.py
 
+from idna import decode
 import requests
 import datetime
 
@@ -62,7 +63,9 @@ class HandleBatchRequests(object):
                     "response_status": status,
                     "response_encoding": response.encoding,
                     "raw_response_headers": response.headers,
-                    "response_content": response.text,
+                    "full_response_content": response.text,
+                    "found_script_tags": self._find_script_tags(response.text),
+                    "found_hyperlinks": self._find_hyperlinks(response.text),
                 })
             elif status == 301 or status == 302:
                 print("The status code is a '%s'" % status)
@@ -113,3 +116,71 @@ class HandleBatchRequests(object):
             dict: All failed requests from attempted HTTP requests
         """
         return self.all_failed_requests
+    
+    def _find_script_tags(self, response_html) -> list[str]:
+        """Find all scripts tags in the HTTP response data
+
+        Args:
+            response_html (str): The HTML data from the HTTP request
+
+        Returns:
+            list[str]: A list of found script tags
+        """
+        response_html = response_html.lower()
+        
+        found_script_tags = []
+        start = 0
+
+        while True:
+            start_index = response_html.find("<script>", start)
+
+            if start_index == -1:
+                break
+
+            end_index = response_html.find("</script>", start_index)
+
+            if end_index == -1:
+                break
+
+            end_index += len("</script>")
+
+            script_tag = response_html[start_index:end_index]
+            found_script_tags.append(script_tag)
+
+            start = end_index
+        
+        return found_script_tags
+      
+    def _find_hyperlinks(self, response_html) -> list[str]:
+        """Find all <a> tags in the HTTP response data
+
+        Args:
+            response_html (str): The HTML data from the HTTP request
+
+        Returns:
+            list[str]: A list of found <a> tags
+        """
+        response_html = response_html.lower()
+        
+        found_hyperlinks = []
+        start = 0
+
+        while True:
+            start_index = response_html.find("<a ", start)
+
+            if start_index == -1:
+                break
+
+            end_index = response_html.find("</a>", start_index)
+
+            if end_index == -1:
+                break
+
+            end_index += len("</a>")
+
+            hyperlink = response_html[start_index:end_index]
+            found_hyperlinks.append(hyperlink)
+
+            start = end_index
+
+        return found_hyperlinks
