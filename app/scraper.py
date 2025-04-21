@@ -74,10 +74,10 @@ if __name__ == "__main__":
 
     if failed_requests:
         print("")
-        print("Failed Requests: ")
-        print("--------------------------")
+        print("\033[31mFailed Requests: \033[0m")
+        print("\033[31m--------------------------\033[0m")
         for index, fail in enumerate(failed_requests):
             if index != 0:
                 print("---")
-            print(f"\033[31m{fail['full_error']}\033[0m")
-        print("--------------------------")
+            print(f"\033[31m{fail['endpoint']} - {fail['error_type']}\033[0m")
+        print("\033[31m--------------------------\033[0m")

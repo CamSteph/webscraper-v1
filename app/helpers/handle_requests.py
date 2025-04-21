@@ -76,6 +76,11 @@ class HandleBatchRequests(object):
             self.add_failed_request(endpoint, status, e)
         
     def store_response_data(self, data) -> None:
+        """Save response data from HTTP request in a list
+
+        Args:
+            data (dict): The response data from the HTTP request
+        """
         self.all_response_data.append(data)
     
     def get_all_response_data(self) -> list[dict]:
@@ -87,6 +92,13 @@ class HandleBatchRequests(object):
         return self.all_response_data
     
     def add_failed_request(self, endpoint, status, error) -> None:
+        """Add failed HTTP request details for tracking
+
+        Args:
+            endpoint (str): The endpoint the HTTP request was made to
+            status (int): The response status code
+            error (Exception): The HTTP request error
+        """
         self.all_failed_requests.append({
                 "endpoint": endpoint,
                 "response_status": status,
