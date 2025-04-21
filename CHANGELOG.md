@@ -1,5 +1,15 @@
 # Web Scraper v1 Changelog
 
+## CHG-006 (04.21.2025)
+
+## Removals
+
+- Remove pseudocode note file
+
+- Remove `__pycache__` directory
+
+---
+
 ## CHG-005 (04.21.2025)
 
 ## Changes
