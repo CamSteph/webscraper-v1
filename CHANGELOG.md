@@ -1,5 +1,19 @@
 # Web Scraper v1 Changelog
 
+## CHG-005 (04.21.2025)
+
+## Changes
+
+- Improve error output display
+
+- Improve structure of error message
+
+## Additions
+
+- Add documentation for the error handling within HandleRequests class
+
+---
+
 ## CHG-004 (04.08.2025)
 
 ## Changes
