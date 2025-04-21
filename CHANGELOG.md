@@ -1,5 +1,19 @@
 # Web Scraper v1 Changelog
 
+## CHG-007 (04.21.2025)
+
+## Changes
+
+- Update history cache file format
+
+## Additions
+
+- Find and store all found script tags in a HTTP response
+
+- Find and store all found hyperlinks in a HTTP response
+
+---
+
 ## CHG-006 (04.21.2025)
 
 ## Removals
